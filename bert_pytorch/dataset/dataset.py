@@ -34,9 +34,9 @@ class BERTDataset(Dataset):
     def __len__(self):
         return self.corpus_lines
 
-    def __getitem__(self, item):
-        t1, t2, is_next_label = self.random_sent(item)
-        t1_random, t1_label = self.random_word(t1)
+    def __getitem__(self, item):# 系统定义的类。在调用data['key']的时候调用
+        t1, t2, is_next_label = self.random_sent(item)# return two sentences and 1 if their relation==is_next else 0
+        t1_random, t1_label = self.random_word(t1)#return tokens id  with label.label of 15% data with num and non-process data(85%) with 0. e.g.[0,0,0,0,3,15,677,0]
         t2_random, t2_label = self.random_word(t2)
 
         # [CLS] tag = SOS tag, [SEP] tag = EOS tag
